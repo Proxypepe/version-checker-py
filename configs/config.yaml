@@ -1,0 +1,30 @@
+# Настройки проверки образов
+namespace_list:
+  - "default"
+  - "kube-system"
+
+images:
+  - name: "quay.io/keycloak/keycloak-operator"
+    desired_tag: "23.0.5"
+    pined_major: 23
+    resolve_sha256:
+      - tag: "23.0.5"
+        hash: "sha256:2b4729e4a4f..."
+      - tag: "23.0.4"
+        hash: "sha256:3e830a1a1d4..."
+  
+  - name: "nginx"
+    desired_tag: "1.25.3"
+    resolve_sha256:
+      - tag: "1.25.3"
+        hash: "sha256:9825d..."
+
+  - name: "postgres"
+    desired_tag: "15.3"
+
+# Настройки подключения к registry
+registry:
+  url: "https://quay.io/v2"
+  auth_type: "token"  # или "basic"
+
+shedule: '* * * * *'
