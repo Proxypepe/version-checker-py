@@ -1,5 +1,3 @@
-import time
-
 from config import load_config
 from kubernetes_client import KubernetesClient
 from metrics import MetricsCollector
@@ -15,6 +13,7 @@ class VersionCheckerService:
         self.k8s_client = KubernetesClient()
         self.registry_client = RegistryClient(self.config.registry)
         self.metrics = MetricsCollector()
+
 
     def check_versions(self):
         logger.info("Starting version check...")
@@ -32,7 +31,6 @@ class VersionCheckerService:
             )
             latest_version = self.registry_client.get_latest_version(image.name, image.registry, image.tag)
             self.metrics.update(image, desired_version, latest_version, status)
-        
         logger.info("Version check completed")
 
 
