@@ -55,6 +55,7 @@ service:
   port: 80
 
 secrets:
+  # -- Provide an existing Secret within the cluster to use for authentication and configuration of version-checker
   existingSecret: ""
   auth:
     name: ""
